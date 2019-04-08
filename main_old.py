@@ -1,6 +1,11 @@
 import pyxel
 
 
+class STATE:
+    CURRENT = 0
+    EVER = 1
+
+
 class Window:
     WIDTH = 200
     HEIGHT = 200
@@ -35,203 +40,65 @@ class Window:
             pyxel.GAMEPAD_2_UP: "UP",
             pyxel.GAMEPAD_2_X: "X",
             pyxel.GAMEPAD_2_Y: "Y",
-
         }
 
         self.pressed_keys = {
-            pyxel.GAMEPAD_1_A: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_B: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_DOWN: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_LEFT: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_LEFT_SHOULDER: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_RIGHT: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_RIGHT_SHOULDER: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_SELECT: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_START: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_UP: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_X: {"current": False, "ever": False},
-            pyxel.GAMEPAD_1_Y: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_A: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_B: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_DOWN: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_LEFT: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_LEFT_SHOULDER: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_RIGHT: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_RIGHT_SHOULDER: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_SELECT: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_START: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_UP: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_X: {"current": False, "ever": False},
-            pyxel.GAMEPAD_2_Y: {"current": False, "ever": False},
+            pyxel.GAMEPAD_1_A: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_B: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_DOWN: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_LEFT: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_LEFT_SHOULDER: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_RIGHT: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_RIGHT_SHOULDER: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_SELECT: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_START: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_UP: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_X: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_1_Y: {STATE.CURRENT: False, STATE.EVER: False},
+
+            pyxel.GAMEPAD_2_A: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_B: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_DOWN: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_LEFT: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_LEFT_SHOULDER: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_RIGHT: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_RIGHT_SHOULDER: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_SELECT: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_START: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_UP: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_X: {STATE.CURRENT: False, STATE.EVER: False},
+            pyxel.GAMEPAD_2_Y: {STATE.CURRENT: False, STATE.EVER: False},
         }
 
         pyxel.run(self.update, self.draw)
 
     def update(self):
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_A):
-            self.pressed_keys[pyxel.GAMEPAD_1_A]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_A]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_A):
-            self.pressed_keys[pyxel.GAMEPAD_1_A]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_B):
-            self.pressed_keys[pyxel.GAMEPAD_1_B]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_B]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_B):
-            self.pressed_keys[pyxel.GAMEPAD_1_B]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_DOWN):
-            self.pressed_keys[pyxel.GAMEPAD_1_DOWN]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_DOWN]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_DOWN):
-            self.pressed_keys[pyxel.GAMEPAD_1_DOWN]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_LEFT):
-            self.pressed_keys[pyxel.GAMEPAD_1_LEFT]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_LEFT]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_LEFT):
-            self.pressed_keys[pyxel.GAMEPAD_1_LEFT]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_LEFT_SHOULDER):
-            self.pressed_keys[pyxel.GAMEPAD_1_LEFT_SHOULDER]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_LEFT_SHOULDER]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_LEFT_SHOULDER):
-            self.pressed_keys[pyxel.GAMEPAD_1_LEFT_SHOULDER]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_RIGHT):
-            self.pressed_keys[pyxel.GAMEPAD_1_RIGHT]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_RIGHT]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_RIGHT):
-            self.pressed_keys[pyxel.GAMEPAD_1_RIGHT]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_RIGHT_SHOULDER):
-            self.pressed_keys[pyxel.GAMEPAD_1_RIGHT_SHOULDER]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_RIGHT_SHOULDER]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_RIGHT_SHOULDER):
-            self.pressed_keys[pyxel.GAMEPAD_1_RIGHT_SHOULDER]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_SELECT):
-            self.pressed_keys[pyxel.GAMEPAD_1_SELECT]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_SELECT]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_SELECT):
-            self.pressed_keys[pyxel.GAMEPAD_1_SELECT]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_START):
-            self.pressed_keys[pyxel.GAMEPAD_1_START]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_START]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_START):
-            self.pressed_keys[pyxel.GAMEPAD_1_START]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_UP):
-            self.pressed_keys[pyxel.GAMEPAD_1_UP]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_UP]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_UP):
-            self.pressed_keys[pyxel.GAMEPAD_1_UP]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_X):
-            self.pressed_keys[pyxel.GAMEPAD_1_X]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_X]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_X):
-            self.pressed_keys[pyxel.GAMEPAD_1_X]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_1_Y):
-            self.pressed_keys[pyxel.GAMEPAD_1_Y]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_1_Y]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_1_Y):
-            self.pressed_keys[pyxel.GAMEPAD_1_Y]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_A):
-            self.pressed_keys[pyxel.GAMEPAD_2_A]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_A]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_A):
-            self.pressed_keys[pyxel.GAMEPAD_2_A]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_B):
-            self.pressed_keys[pyxel.GAMEPAD_2_B]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_B]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_B):
-            self.pressed_keys[pyxel.GAMEPAD_2_B]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_DOWN):
-            self.pressed_keys[pyxel.GAMEPAD_2_DOWN]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_DOWN]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_DOWN):
-            self.pressed_keys[pyxel.GAMEPAD_2_DOWN]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_LEFT):
-            self.pressed_keys[pyxel.GAMEPAD_2_LEFT]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_LEFT]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_LEFT):
-            self.pressed_keys[pyxel.GAMEPAD_2_LEFT]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_LEFT_SHOULDER):
-            self.pressed_keys[pyxel.GAMEPAD_2_LEFT_SHOULDER]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_LEFT_SHOULDER]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_LEFT_SHOULDER):
-            self.pressed_keys[pyxel.GAMEPAD_2_LEFT_SHOULDER]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_RIGHT):
-            self.pressed_keys[pyxel.GAMEPAD_2_RIGHT]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_RIGHT]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_RIGHT):
-            self.pressed_keys[pyxel.GAMEPAD_2_RIGHT]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_RIGHT_SHOULDER):
-            self.pressed_keys[pyxel.GAMEPAD_2_RIGHT_SHOULDER]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_RIGHT_SHOULDER]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_RIGHT_SHOULDER):
-            self.pressed_keys[pyxel.GAMEPAD_2_RIGHT_SHOULDER]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_SELECT):
-            self.pressed_keys[pyxel.GAMEPAD_2_SELECT]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_SELECT]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_SELECT):
-            self.pressed_keys[pyxel.GAMEPAD_2_SELECT]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_START):
-            self.pressed_keys[pyxel.GAMEPAD_2_START]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_START]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_START):
-            self.pressed_keys[pyxel.GAMEPAD_2_START]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_UP):
-            self.pressed_keys[pyxel.GAMEPAD_2_UP]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_UP]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_UP):
-            self.pressed_keys[pyxel.GAMEPAD_2_UP]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_X):
-            self.pressed_keys[pyxel.GAMEPAD_2_X]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_X]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_X):
-            self.pressed_keys[pyxel.GAMEPAD_2_X]["current"] = False
-
-        if pyxel.btnp(pyxel.GAMEPAD_2_Y):
-            self.pressed_keys[pyxel.GAMEPAD_2_Y]["current"] = True
-            self.pressed_keys[pyxel.GAMEPAD_2_Y]["ever"] = True
-        elif pyxel.btnr(pyxel.GAMEPAD_2_Y):
-            self.pressed_keys[pyxel.GAMEPAD_2_Y]["current"] = False
+        for key in self.pressed_keys:
+            if pyxel.btnp(key):
+                self.pressed_keys[key][STATE.CURRENT] = True
+                self.pressed_keys[key][STATE.EVER] = True
+            elif pyxel.btnr(key):
+                self.pressed_keys[key][STATE.CURRENT] = False
 
     def draw(self):
         pyxel.cls(1)
         y = 0
-        for k, v in self.pressed_keys.items():
-            pyxel.text(60, y, self.keys_name[k], 7)
+        for key, v in self.pressed_keys.items():
+            pyxel.text(60, y, self.keys_name.get(key), 7)
 
-            if v.get("current"):
+            if v.get(STATE.CURRENT):
                 col = 11
             else:
                 col = 8
 
-            pyxel.text(10, y, str(v['current']), col)
+            pyxel.text(10, y, str(v.get(STATE.CURRENT)), col)
 
-            if v.get("ever"):
+            if v.get(STATE.EVER):
                 col = 11
             else:
                 col = 8
 
-            pyxel.text(35, y, str(v['ever']), col)
+            pyxel.text(35, y, str(v.get(STATE.EVER)), col)
 
             y += 7
 
