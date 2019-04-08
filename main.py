@@ -60,6 +60,13 @@ class Window:
         self.pad_pos = Vec2(GamePadImage.POS_X,
                             GamePadImage.POS_Y)
 
+        self._set_pos_btns()
+
+        self.current_gamepad = 0
+
+        pyxel.run(self.update, self.draw)
+
+    def _set_pos_btns(self):
         x, y = self.pad_pos.x + 43, self.pad_pos.y
         self.buttons[pyxel.GAMEPAD_1_X].x = x
         self.buttons[pyxel.GAMEPAD_1_X].y = y - 10
@@ -91,10 +98,6 @@ class Window:
         self.buttons[pyxel.GAMEPAD_1_LEFT_SHOULDER].y = y
         self.buttons[pyxel.GAMEPAD_1_RIGHT_SHOULDER].x = x + 40
         self.buttons[pyxel.GAMEPAD_1_RIGHT_SHOULDER].y = y
-
-        self.current_gamepad = 0
-
-        pyxel.run(self.update, self.draw)
 
     def update(self):
         for key_code, btn in self.buttons.items():
