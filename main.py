@@ -106,12 +106,9 @@ class Window:
             elif pyxel.btnr(key_code):
                 btn.release()
 
-        if pyxel.btnp(pyxel.KEY_SPACE):
-            self.current_gamepad += 1
-            # self.current_gamepad %= 2
-        if pyxel.btnr(pyxel.KEY_SPACE):
-            self.current_gamepad -= 1
-            # self.current_gamepad %= 2
+        # if pyxel.btnp(pyxel.KEY_SPACE):
+        #     self.current_gamepad += 1
+        #     self.current_gamepad %= 2
 
     def draw_top_bar(self):
         pyxel.rect(0, 0, CONST.WINDOW.WIDTH, 14, CONST.COLOR.CREAM)
