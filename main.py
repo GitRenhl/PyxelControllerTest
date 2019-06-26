@@ -62,9 +62,17 @@ class Window:
 
         self._set_pos_btns()
 
-        self.current_gamepad = 0
+        self._current_gamepad = 0
 
         pyxel.run(self.update, self.draw)
+
+    def next_game_pad(self):
+        self._current_gamepad += 1
+        self._current_gamepad %= 2
+
+    @property
+    def current_gamepad(self):
+        return self._current_gamepad
 
     def _set_pos_btns(self):
         x, y = self.pad_pos.x + 43, self.pad_pos.y
@@ -106,30 +114,33 @@ class Window:
             elif pyxel.btnr(key_code):
                 btn.release()
 
-        # if pyxel.btnp(pyxel.KEY_SPACE):
-        #     self.current_gamepad += 1
-        #     self.current_gamepad %= 2
+        if pyxel.btnp(pyxel.KEY_SPACE):
+            self.next_game_pad()
 
     def draw_top_bar(self):
-        pyxel.rect(0, 0, CONST.WINDOW.WIDTH, 14, CONST.COLOR.CREAM)
-        pyxel.line(0, 15, CONST.WINDOW.WIDTH, 15, CONST.COLOR.BLACK)
+        pyxel.rect(0, 0,
+                   pyxel.width, CONST.TOPBAR.HEIGHT,
+                   CONST.COLOR.CREAM)
+        pyxel.line(0, CONST.TOPBAR.HEIGHT,
+                   pyxel.width, CONST.TOPBAR.HEIGHT,
+                   CONST.COLOR.BLACK)
 
-        text_pos_x = CONST.WINDOW.WIDTH // 2 - 17
-        text_pos_y = 5
-        icon_size = 8
-
-        pyxel.blt(text_pos_x - 8, text_pos_y - 2,
+        pyxel.blt(CONST.TOPBAR.TEXT_X - 8, CONST.TOPBAR.TEXT_Y - 2,
                   0,
                   136, 0,
-                  icon_size, icon_size
+                  CONST.TOPBAR.ICON_SIZE, CONST.TOPBAR.ICON_SIZE
                   )
-        pyxel.blt(text_pos_x + 35, text_pos_y - 2,
+        pyxel.blt(CONST.TOPBAR.TEXT_X + 35, CONST.TOPBAR.TEXT_Y - 2,
                   0,
                   144, 0,
-                  icon_size, icon_size
+                  CONST.TOPBAR.ICON_SIZE, CONST.TOPBAR.ICON_SIZE
                   )
-        pyxel.text(text_pos_x, text_pos_y,
-                   f"GAMEPAD {self.current_gamepad+1}", CONST.COLOR.BLACK)
+
+        pyxel.text(
+            CONST.TOPBAR.TEXT_X, CONST.TOPBAR.TEXT_Y,
+            f"GAMEPAD {self.current_gamepad+1}",
+            CONST.COLOR.BLACK
+        )
 
     def draw(self):
         pyxel.cls(2)

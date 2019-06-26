@@ -61,17 +61,17 @@ class PadButton:
     def draw_rect(self):
         fix_x, fix_y = self._pos.x - self.width // 2, self._pos.y - self.height // 2
 
-        pyxel.rect(fix_x - 1, fix_y - 1,
-                   fix_x + self.width + 1, fix_y + self.height + 1,
-                   CONST.COLOR.BLACK)
+        pyxel.rectb(fix_x - 1, fix_y - 1,
+                    self.width + 2, self.height + 2,
+                    CONST.COLOR.BLACK)
 
         if not self._is_pressed:
-            pyxel.rect(fix_x, fix_y,
-                       fix_x + self.width + 2, fix_y + self.height + 2,
-                       CONST.COLOR.BLACK)
+            pyxel.rectb(fix_x, fix_y,
+                        self.width + 2, self.height + 2,
+                        CONST.COLOR.BLACK)
 
         pyxel.rect(fix_x, fix_y,
-                   fix_x + self.width, fix_y + self.height,
+                   self.width, self.height,
                    self._color)
 
     def draw_circ(self):
